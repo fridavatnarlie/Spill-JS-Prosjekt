@@ -15,10 +15,32 @@
     </div>
 
     <script>
-        
-        const bakgrunnElm = document.getElementById("bane")
-        const epleElm = document.getElementById("ball")
+
+        const bakgrunnElm = document.getElementById("bakgrunn")
+        const epleElm = document.getElementById("eple")
         const kurvElm = document.getElementById("kurv") 
+        const skjermbredde = bakgrunnElm.offsetWidth;
+        const kurvbredde = kurvElm.offsetWidth;
+
+        let kurvPosition = 180;
+        const kurvHastighet = 20; 
+        let eplePosition = 0;
+        let epleSted = Math.random() * (bakgrunnElm.offsetWidth - epleElm.offsetWidth);
+        const steglengde = 5;
+
+        document.addEventListener('keydown', (event) => {
+        if (event.key === "ArrowLeft" && kurvPosition > 0) {
+            kurvPosition -= steglengde; 
+        } 
+        else if (event.key === "ArrowRight" && kurvPosition < skjermbredde - kurvbredde) {
+            kurvPosition += steglengde;
+        }
+        kurvElm.style.left = `${kurvPosition}%`;
+        });
+
+    
+    
+
 
     </script>
 

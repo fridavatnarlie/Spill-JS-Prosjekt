@@ -10,7 +10,7 @@ img{
 
 body {
     height: 100vh;
-    background-image: url("bilder/bakgrunnsbilde.jpg");
+    background-image: url("bilder/trees.jpeg");
     background-size: cover;
 }
 
@@ -29,7 +29,7 @@ body {
 
 #kurv {
     width: 150px;
-    position: fixed;
+    position: absolute;
     left: 50%;
     bottom: 10px;
 }
