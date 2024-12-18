@@ -4,8 +4,30 @@
     box-sizing: border-box;
 }
 
-body{
-    background-image: url('bilder/trees.jpeg');
+img{
+    width: 100%;
+}
+
+body {
+    height: 100vh;
+    background-image: url("bilder/trees.jpeg");
+}
+
+#bakgrunn {
     background-size: cover;
+}
+
+#eple {
+    width: 40px;
+    position: absolute;
+    top: 50px;
+    left: 0px;
+}
+
+#kurv {
+    width: 150px;
+    position: absolute;
+    top: 50px;
+    left: 0px;
 }
 
