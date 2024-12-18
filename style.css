@@ -10,24 +10,28 @@ img{
 
 body {
     height: 100vh;
-    background-image: url("bilder/trees.jpeg");
+    background-image: url("bilder/bakgrunnsbilde.jpg");
+    background-size: cover;
 }
 
 #bakgrunn {
-    background-size: cover;
+    background-size: contain;
+    position: relative;
+    height: 100vh;
+
 }
 
 #eple {
     width: 40px;
     position: absolute;
-    top: 50px;
-    left: 0px;
+    left: 50%;
 }
 
 #kurv {
     width: 150px;
-    position: absolute;
-    top: 50px;
-    left: 0px;
+    position: fixed;
+    left: 50%;
+    bottom: 10px;
 }
+
 
