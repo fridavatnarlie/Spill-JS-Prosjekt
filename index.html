@@ -27,6 +27,10 @@
         const skjermhøyde = bakgrunnElm.offsetHeight;
         const kurvbredde = kurvElm.offsetWidth;
 
+        let epleTop = 0;
+        let epleVenstre = Math.random()* (skjermbredde - 40);
+        const fallHastighet = 5;
+
         document.addEventListener('keydown', (event) => {
             if (event.key === "ArrowLeft") {
                 kurvHastighet = -steglengde;
@@ -36,24 +40,23 @@
             }
         });
 
-        function flytt() {
+        function flytt () {
             kurvPosition += kurvHastighet;
 
             if (kurvPosition < 0) {
-                kurvPosition = 0; 
+                kurvPosition = 0;
+                kurvHastighet = -kurvHastighet;
             } 
+
             else if (kurvPosition > skjermbredde - kurvbredde) {
                 kurvPosition = skjermbredde - kurvbredde;
+                kurvHastighet = -kurvHastighet;
             }
 
             kurvElm.style.left = `${kurvPosition}px`;
         }
 
         setInterval(flytt, 16);
-
-    
-    
-
 
     </script>
 
