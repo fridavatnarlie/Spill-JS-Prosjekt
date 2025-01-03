@@ -9,6 +9,7 @@
 
 <body>
 
+    <!-- DET ESTETISKE -->
     <div id="bakgrunn">
         <img id="eple" src="bilder/eple.png" alt="">
         <img id="kurv" src="bilder/kurv.png" alt="">
@@ -16,10 +17,12 @@
 
     <script>
 
+    /* DEFINISJONER */
         const bakgrunnElm = document.getElementById("bakgrunn");
         const epleElm = document.getElementById("eple");
         const kurvElm = document.getElementById("kurv");
 
+    /* KURV */
         let kurvPosition = 180;
         let kurvHastighet = 0;
         let steglengde = 5;
@@ -27,10 +30,12 @@
         const skjermhøyde = bakgrunnElm.offsetHeight;
         const kurvbredde = kurvElm.offsetWidth;
 
+    /* EPLE */
         let epleTop = 0;
         let epleVenstre = Math.random()* (skjermbredde - 40);
         const fallHastighet = 5;
 
+    /* AKTIVERER PILTASTENDE FOR KURVEN */
         document.addEventListener('keydown', (event) => {
             if (event.key === "ArrowLeft") {
                 kurvHastighet = -steglengde;
@@ -40,6 +45,7 @@
             }
         });
 
+    /* KURVEN BEVEGER SEG, og "bownser" tilbake dersom den treffer en kant */
         function flytt () {
             kurvPosition += kurvHastighet;
 
@@ -53,10 +59,27 @@
                 kurvHastighet = -kurvHastighet;
             }
 
-            kurvElm.style.left = `${kurvPosition}px`;
+            kurvElm.style.left = kurvPosition + "px"
         }
 
-        setInterval(flytt, 16);
+        setInterval(flytt, 13);
+
+        function fall (){
+            epleTop += fallHastighet;
+
+            epleElm.style.top = epleTop + "px"
+
+            if (epleTop > skjermhøyde){
+                epleTop = 0;
+                epleVenstre = Math.random() * (skjermbredde - 40);
+                epleElm.style.left = epleVenstre + "px"
+            }
+        }
+
+        setInterval(fall, 18)
+
+
+
 
     </script>
 
