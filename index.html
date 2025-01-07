@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,12 +18,12 @@
 
     <script>
 
-    /* DEFINISJONER */
+        /* DEFINISJONER */
         const bakgrunnElm = document.getElementById("bakgrunn");
         const epleElm = document.getElementById("eple");
         const kurvElm = document.getElementById("kurv");
 
-    /* KURV */
+        /* KURV */
         let kurvPosition = 180;
         let kurvHastighet = 0;
         let steglengde = 5;
@@ -30,29 +31,34 @@
         const skjermhøyde = bakgrunnElm.offsetHeight;
         const kurvbredde = kurvElm.offsetWidth;
 
-    /* EPLE */
+        /* EPLE */
         let epleTop = 0;
-        let epleVenstre = Math.random()* (skjermbredde - 40);
+        let epleVenstre = Math.random() * (skjermbredde - 40);
         const fallHastighet = 5;
 
-    /* AKTIVERER PILTASTENDE FOR KURVEN */
+        /* POENG */
+        let poeng = 0;
+        const epleHøyre = epleVenstre + epleElm.offsetWidth;
+        const kurvHøyre = kurvPosition + kurvElm.offsetWidth;
+
+        /* AKTIVERER PILTASTENDE FOR KURVEN */
         document.addEventListener('keydown', (event) => {
             if (event.key === "ArrowLeft") {
                 kurvHastighet = -steglengde;
-            } 
+            }
             else if (event.key === "ArrowRight") {
                 kurvHastighet = steglengde;
             }
         });
 
-    /* KURVEN BEVEGER SEG, og "bownser" tilbake dersom den treffer en kant */
-        function flytt () {
+        /* KURVEN BEVEGER SEG, og "bownser" tilbake dersom den treffer en kant */
+        function flytt() {
             kurvPosition += kurvHastighet;
 
             if (kurvPosition < 0) {
                 kurvPosition = 0;
                 kurvHastighet = -kurvHastighet;
-            } 
+            }
 
             else if (kurvPosition > skjermbredde - kurvbredde) {
                 kurvPosition = skjermbredde - kurvbredde;
@@ -64,26 +70,39 @@
 
         setInterval(flytt, 13);
 
-    /* EPLE FALLER NEDOVER, posisjonen oppdateres når eple når bunnen og får en tilfeldig posisjon */
-        function fall (){
+        /* EPLE FALLER NEDOVER, posisjonen oppdateres når eple når bunnen og får en tilfeldig posisjon */
+        function fall() {
             epleTop += fallHastighet;
 
-            epleElm.style.top = epleTop + "px"
+            epleElm.style.top = epleTop + "px";
 
-            if (epleTop > skjermhøyde){
+            if (epleTop > skjermhøyde) {
                 epleTop = 0;
                 epleVenstre = Math.random() * (skjermbredde - 40);
                 epleElm.style.left = epleVenstre + "px"
             }
-        }
 
-        setInterval(fall, 18)
+            if (epleTop + epleElm.offsetWidth >= skjermhøyde - kurvElm.offsetWidth
+            && epleVenstre < kurvHøyre
+            && epleHøyre > kurvPosition) {
+            poeng++
+            console.log("Poeng:", poeng);
+
+            epleTop = 0;
+            epleVenstre = Math.random() * (skjermbredde - 40);
+            epleElm.style.left = epleVenstre + "px"
+        }
+    }
+
+        setInterval(fall, 18);
+        setInterval(flytt, 13);
 
 
 
 
     </script>
 
-    
+
 </body>
+
 </html>
