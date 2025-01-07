@@ -16,12 +16,15 @@
         <img id="kurv" src="bilder/kurv.png" alt="">
     </div>
 
+    <div id="poengteller"> Poeng: 0 </div>
+
     <script>
 
         /* DEFINISJONER */
         const bakgrunnElm = document.getElementById("bakgrunn");
         const epleElm = document.getElementById("eple");
         const kurvElm = document.getElementById("kurv");
+        const poengtellerElm = document.getElementById("poengteller");
 
         /* KURV */
         let kurvPosition = 180;
@@ -81,7 +84,7 @@
                 && epleVenstrekant < kurvHøyrekant
                 && epleHøyrekant > kurvPosition) {
                 poeng++
-                console.log("Poeng:", poeng);
+                poengtellerElm.textContent = "Poeng:" + poeng;
                 resetEple();
             }
         }

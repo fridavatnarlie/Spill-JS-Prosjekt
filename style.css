@@ -34,4 +34,9 @@ body {
     bottom: 10px;
 }
 
-
+#poengteller{
+    position: absolute;
+    top: 10px;
+    font-size: 25px;
+    color: white;
+}
