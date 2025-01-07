@@ -29,6 +29,7 @@
         let steglengde = 5;
         const skjermbredde = bakgrunnElm.offsetWidth;
         const skjermhøyde = bakgrunnElm.offsetHeight;
+        const kurvbredde = kurvElm.offsetWidth;
 
         /* EPLE */
         let epleTop = 0;
@@ -48,7 +49,7 @@
             }
         });
 
-        /* KURVEN BEVEGER SEG, og "bownser" tilbake dersom den treffer en kant */
+        /* KURVEN BEVEGER SEG, og "bouncer" tilbake dersom den treffer en kant */
         function flytt() {
             kurvPosition += kurvHastighet;
 
@@ -68,39 +69,33 @@
         /* EPLE FALLER NEDOVER, posisjonen oppdateres når eple når bunnen og får en tilfeldig posisjon */
         function fall() {
             epleTop += fallHastighet;
-
             epleElm.style.top = epleTop + "px";
+            const epleHøyrekant = epleVenstrekant + epleElm.offsetWidth;
+            const kurvHøyrekant = kurvPosition + kurvElm.offsetWidth;
 
             if (epleTop > skjermhøyde) {
                 resetEple();
             }
 
-            const epleHøyrekant = epleVenstre + epleElm.offsetWidth;
-            const kurvHøyrekant = kurvPosition + kurvElm.offsetWidth;
-
             if (epleTop + epleElm.offsetHeight >= skjermhøyde - kurvElm.offsetHeight
                 && epleVenstrekant < kurvHøyrekant
                 && epleHøyrekant > kurvPosition) {
-            poeng++
-            console.log("Poeng:", poeng);
-            resetEple();
+                poeng++
+                console.log("Poeng:", poeng);
+                resetEple();
+            }
         }
-    }
 
         function resetEple() {
             epleTop = 0;
             epleVenstrekant = Math.random() * (skjermbredde - epleElm.offsetWidth);
             epleElm.style.left = epleVenstrekant + "px";
-    }
+        }
 
         setInterval(fall, 18);
         setInterval(flytt, 13);
 
-
-
-
     </script>
-
 
 </body>
 
