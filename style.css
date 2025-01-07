@@ -44,3 +44,18 @@ body {
     padding: 20px;
     color: darkgreen;
 }
+
+.hjerte{
+    width: 50px;
+}
+
+#hjerter{
+    position: absolute;
+    top: 25px;
+    right: 380px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
