@@ -33,13 +33,13 @@
 
         /* EPLE */
         let epleTop = 0;
-        let epleVenstre = Math.random() * (skjermbredde - 40);
+        let epleVenstrekant = Math.random() * (skjermbredde - 40);
         const fallHastighet = 5;
 
         /* POENG */
         let poeng = 0;
-        const epleHøyre = epleVenstre + epleElm.offsetWidth;
-        const kurvHøyre = kurvPosition + kurvElm.offsetWidth;
+        const epleHøyrekant = epleVenstre + epleElm.offsetWidth;
+        const kurvHøyrekant = kurvPosition + kurvElm.offsetWidth;
 
         /* AKTIVERER PILTASTENDE FOR KURVEN */
         document.addEventListener('keydown', (event) => {
@@ -78,19 +78,19 @@
 
             if (epleTop > skjermhøyde) {
                 epleTop = 0;
-                epleVenstre = Math.random() * (skjermbredde - 40);
-                epleElm.style.left = epleVenstre + "px"
+                epleVenstrekant = Math.random() * (skjermbredde - 40);
+                epleElm.style.left = epleVenstrekant + "px"
             }
 
-            if (epleTop + epleElm.offsetWidth >= skjermhøyde - kurvElm.offsetWidth
-            && epleVenstre < kurvHøyre
-            && epleHøyre > kurvPosition) {
+            if (epleTop + epleElm.offsetHeight >= skjermhøyde - kurvElm.offsetHeight
+                && epleVenstrekant < kurvHøyrekant
+                && epleHøyrekant > kurvPosition) {
             poeng++
             console.log("Poeng:", poeng);
 
             epleTop = 0;
-            epleVenstre = Math.random() * (skjermbredde - 40);
-            epleElm.style.left = epleVenstre + "px"
+            epleVenstrekant = Math.random() * (skjermbredde - 40);
+            epleElm.style.left = epleVenstrekant + "px"
         }
     }
 
