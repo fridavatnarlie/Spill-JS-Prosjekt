@@ -35,6 +35,7 @@
         const epleElm = document.getElementById("eple");
         const kurvElm = document.getElementById("kurv");
         const poengtellerElm = document.getElementById("poengteller");
+        const hjerteElm = document.getElementById("hjerter");
 
         /* KURV */
         let kurvPosition = 180;
@@ -51,6 +52,10 @@
 
         /* POENG */
         let poeng = 0;
+
+
+        let liv = 3;
+
 
         /* AKTIVERER PILTASTENDE FOR KURVEN */
         document.addEventListener('keydown', (event) => {
@@ -88,6 +93,7 @@
 
             if (epleTop > skjermhøyde) {
                 resetEple();
+                mistetLiv();
             }
 
             if (epleTop + epleElm.offsetHeight >= skjermhøyde - kurvElm.offsetHeight
@@ -105,8 +111,25 @@
             epleElm.style.left = epleVenstrekant + "px";
         }
 
-        setInterval(fall, 20);
-        setInterval(flytt, 13);
+
+        const intFall = setInterval(fall, 20);
+        const intFlytt = setInterval(flytt, 13);
+
+        function mistetLiv(){
+            liv--
+            console.log("Mistet et liv:", liv)
+
+            hjerteElm.removeChild(hjerteElm.firstElementChild);
+
+
+            if (liv == 0){
+                clearInterval(intFall)
+                clearInterval(intFlytt)
+                gameoverElm.textContent = "GAME OVER";
+                
+            }
+        }
+
 
     </script>
 
