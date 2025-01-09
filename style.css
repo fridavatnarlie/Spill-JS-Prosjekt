@@ -39,7 +39,6 @@ body {
     top: 10px;
     right: 10px;
     font-size: 40px;
-    color: white;
     font-family: "Press Start 2P";
     padding: 20px;
     color: darkgreen;
@@ -59,14 +58,20 @@ body {
     gap: 10px;
 }
 
-#gameover{
+
+#gameover {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 40px;
-    color: white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 90px;
     font-family: "Press Start 2P";
-    padding: 20px;
     color: red;
+    text-align: center;
 }
+
 

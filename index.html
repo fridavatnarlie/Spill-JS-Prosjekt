@@ -28,6 +28,8 @@
         <img class="hjerte" src="bilder/hjerte2.png" alt="">
     </div>
 
+    <div id="gameover"></div>
+
     <script>
 
         /* DEFINISJONER */
@@ -53,9 +55,7 @@
         /* POENG */
         let poeng = 0;
 
-
         let liv = 3;
-
 
         /* AKTIVERER PILTASTENDE FOR KURVEN */
         document.addEventListener('keydown', (event) => {
@@ -125,7 +125,9 @@
             if (liv == 0){
                 clearInterval(intFall)
                 clearInterval(intFlytt)
+                const gameoverElm = document.getElementById("gameover");
                 gameoverElm.textContent = "GAME OVER";
+                gameoverElm.style.display = "flex";
                 
             }
         }
@@ -136,3 +138,4 @@
 </body>
 
 </html>
+
