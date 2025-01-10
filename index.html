@@ -54,8 +54,10 @@
 
         /* POENG */
         let poeng = 0;
-
         let liv = 3;
+
+        const musikkBakgrunn = new Audio("musikk/bakgrunn.mp3")
+        const musikkGameover = new Audio("musikk/gameover.mp3")
 
         /* AKTIVERER PILTASTENDE FOR KURVEN */
         document.addEventListener('keydown', (event) => {
@@ -91,6 +93,8 @@
             const epleHøyrekant = epleVenstrekant + epleElm.offsetWidth;
             const kurvHøyrekant = kurvPosition + kurvElm.offsetWidth;
 
+            musikkBakgrunn.play()
+
             if (epleTop > skjermhøyde) {
                 resetEple();
                 mistetLiv();
@@ -111,7 +115,6 @@
             epleElm.style.left = epleVenstrekant + "px";
         }
 
-
         const intFall = setInterval(fall, 20);
         const intFlytt = setInterval(flytt, 13);
 
@@ -122,9 +125,14 @@
             hjerteElm.removeChild(hjerteElm.firstElementChild);
 
 
-            if (liv == 0){
+            if (liv === 0){
                 clearInterval(intFall)
                 clearInterval(intFlytt)
+
+                musikkBakgrunn.pause()
+                musikkBakgrunn.currentTime = 0;
+                musikkGameover.play()
+
                 const gameoverElm = document.getElementById("gameover");
                 gameoverElm.textContent = "GAME OVER";
                 gameoverElm.style.display = "flex";
