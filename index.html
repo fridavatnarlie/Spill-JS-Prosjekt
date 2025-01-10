@@ -69,6 +69,14 @@
             }
         });
 
+        /* function startSpill(){
+            musikkBakgrunn.loop = true;
+            musikkBakgrunn.play()
+            console.log("Spillet er startet");
+        }
+
+        startSpill(); */
+
         /* KURVEN BEVEGER SEG, og "bouncer" tilbake dersom den treffer en kant */
         function flytt() {
             kurvPosition += kurvHastighet;
@@ -92,8 +100,6 @@
             epleElm.style.top = epleTop + "px";
             const epleHøyrekant = epleVenstrekant + epleElm.offsetWidth;
             const kurvHøyrekant = kurvPosition + kurvElm.offsetWidth;
-
-            musikkBakgrunn.play()
 
             if (epleTop > skjermhøyde) {
                 resetEple();
